@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select
+from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
+from app.core.security import hash_password
 from app.database import get_db
 from app.models.user import User
 from app.schemas.user import UserCreate, UserResponse
@@ -24,8 +25,10 @@ def create_user(
 ):
     existing_user = db.scalar(
         select(User).where(
-            (User.email == user_data.email)
-            | (User.username == user_data.username)
+            or_(
+                User.email == user_data.email,
+                User.username == user_data.username,
+            )
         )
     )
 
@@ -38,7 +41,7 @@ def create_user(
     user = User(
         username=user_data.username,
         email=user_data.email,
-        password_hash=user_data.password,
+        password_hash=hash_password(user_data.password),
     )
 
     db.add(user)

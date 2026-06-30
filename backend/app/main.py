@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
 from app.models import User  # noqa: F401
 from app.routes.users import router as users_router
+from app.routes.auth import router as auth_router
 
 
 Base.metadata.create_all(bind=engine)
@@ -24,6 +25,7 @@ app.add_middleware(
 )
 
 app.include_router(users_router)
+app.include_router(auth_router)
 
 
 @app.get("/")
