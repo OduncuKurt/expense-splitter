@@ -7,6 +7,7 @@ from app.routes.users import router as users_router
 from app.routes.auth import router as auth_router
 from app.routes.groups import router as groups_router
 from app.routes.expenses import router as expenses_router
+from app.routes.balances import router as balances_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -29,6 +30,7 @@ app.include_router(users_router)
 app.include_router(auth_router)
 app.include_router(groups_router)
 app.include_router(expenses_router)
+app.include_router(balances_router)
 
 @app.get("/")
 def root():
