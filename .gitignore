@@ -18,3 +18,22 @@ frontend/dist/
 .idea/
 .DS_Store
 Thumbs.dbbackend/expense_splitter.db
+
+
+# Local database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.env.local
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Frontend
+node_modules/
+dist/
