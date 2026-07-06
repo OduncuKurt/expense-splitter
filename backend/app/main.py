@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database import Base, engine
+
 from app.models import Expense, ExpenseSplit, Group, GroupMember, User  # noqa: F401
 from app.routes.users import router as users_router
 from app.routes.auth import router as auth_router
@@ -9,7 +9,7 @@ from app.routes.groups import router as groups_router
 from app.routes.expenses import router as expenses_router
 from app.routes.balances import router as balances_router
 
-Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(
     title="Expense Splitter API",
