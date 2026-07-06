@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.local
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Frontend
+node_modules/
+dist/
